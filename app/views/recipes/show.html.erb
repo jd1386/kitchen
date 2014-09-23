@@ -25,5 +25,17 @@
   <%= @recipe.serving %>
 </p>
 
+<% unless @ingredients.blank? %>
+  <p>
+    <strong>Ingredients</strong>
+  </p>
+
+  <p>
+    <% @ingredients.each do |i| %>
+    <%= i.food_item.name %> <%= i.volume %>
+    <% end %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

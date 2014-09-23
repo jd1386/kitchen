@@ -11,13 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923102241) do
+ActiveRecord::Schema.define(version: 20140923103949) do
 
   create_table "food_items", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ingredients", force: true do |t|
+    t.string   "volume"
+    t.integer  "recipe_id"
+    t.integer  "food_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredients", ["food_item_id"], name: "index_ingredients_on_food_item_id"
+  add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
 
   create_table "recipes", force: true do |t|
     t.string   "name"
