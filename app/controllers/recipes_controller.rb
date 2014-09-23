@@ -11,13 +11,16 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+  3.times { @recipe.ingredients.build }
   end
 
   def edit
+    @recipe.ingredients.build
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+   # @ingredients = @recipe.ingredients.build()
 
     respond_to do |format|
       if @recipe.save
@@ -56,6 +59,6 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-      params.require(:recipe).permit(:name, :method, :source, :tip, :serving)
+      params.require(:recipe).permit(:name, :method, :source, :tip, :serving, ingredients_attributes: [:id, :recipe_id, :food_item_id, :volume])
     end
 end

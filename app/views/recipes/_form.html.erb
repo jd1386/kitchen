@@ -1,4 +1,5 @@
-<%= form_for(@recipe) do |f| %>
+<%= form_for @recipe, :html => { :multipart => true } do |f| %>
+<form class="form-horizontal" role="form">
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -31,7 +32,25 @@
     <%= f.label :serving %><br>
     <%= f.text_field :serving %>
   </div>
+
+  <hr>
+   <h3>Ingredients</h3>
+  <!-- Begin form for recipe's ingredients -->
+    <%= f.fields_for :ingredients do |i| %>
+      <div class="field">
+        
+          <%= i.collection_select(:food_item_id, FoodItem.all, :id, :name, { prompt: 'Select Item' }) %>
+        
+        <%= i.text_field :volume %>
+        <%= i.check_box :_destroy %>
+        <%= f.label :_destroy, "Remove Ingredient" %>
+      </div>
+    <% end %>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-lg btn-primary' %>
   </div>
+
+</form>
 <% end %>

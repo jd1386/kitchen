@@ -32,7 +32,7 @@
 
   <p>
     <% @ingredients.each do |i| %>
-    <%= i.food_item.name %> <%= i.volume %>
+    <%= i.food_item.name %>: <%= i.volume %> <br>
     <% end %>
   </p>
 <% end %>
