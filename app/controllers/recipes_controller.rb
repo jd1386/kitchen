@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   3.times { @recipe.ingredients.build }
   # commit and push test from new macbook pro - delete me after test
+  # commit and push test from new macbook pro - delete me after test
   end
 
   def edit
