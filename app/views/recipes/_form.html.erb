@@ -38,11 +38,13 @@
   <!-- Begin form for recipe's ingredients -->
     <%= f.fields_for :ingredients do |i| %>
       <div class="field">
+        <%= i.fields_for :food_item do |builder| %>
+          <%= builder.text_field :name, placeholder: 'Food Item' %>
+        <% end %>
         
-          <%= i.collection_select(:food_item_id, FoodItem.all, :id, :name, { prompt: 'Select Item' }) %>
-        
-        <%= i.text_field :volume %>
+        <%= i.text_field :volume, placeholder: 'Volume' %>
         <%= i.check_box :_destroy %>
+
         <%= f.label :_destroy, "Remove Ingredient" %>
       </div>
     <% end %>

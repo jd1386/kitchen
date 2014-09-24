@@ -25,16 +25,18 @@
   <%= @recipe.serving %>
 </p>
 
-<% unless @ingredients.blank? %>
+<% unless @recipe.ingredients.blank? %>
   <p>
     <strong>Ingredients</strong>
   </p>
 
-  <p>
-    <% @ingredients.each do |i| %>
-    <%= i.food_item.name %>: <%= i.volume %> <br>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <% @recipe.food_items.each do |food_item| %>
+      <p><%= food_item.name %> : <%= ingredient.volume %>
     <% end %>
-  </p>
+    </p>
+  <% end %>
+  
 <% end %>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |

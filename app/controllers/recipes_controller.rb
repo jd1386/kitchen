@@ -6,23 +6,23 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @ingredients = @recipe.ingredients
+    
   end
 
   def new
     @recipe = Recipe.new
-  3.times { @recipe.ingredients.build }
-  # commit and push test from new macbook pro - delete me after test
-  # commit and push test from new macbook pro - delete me after test
+    3.times { @recipe.ingredients.build.build_food_item }
+    # @recipe.ingredients.build_food_item = FoodItem.find_or_create_by()
+
   end
 
   def edit
-    @recipe.ingredients.build
+    @recipe.ingredients.build.build_food_item
   end
 
   def create
+    
     @recipe = Recipe.new(recipe_params)
-   # @ingredients = @recipe.ingredients.build()
 
     respond_to do |format|
       if @recipe.save
@@ -61,6 +61,6 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-      params.require(:recipe).permit(:name, :method, :source, :tip, :serving, ingredients_attributes: [:id, :recipe_id, :food_item_id, :volume])
+      params.require(:recipe).permit(:name, :method, :source, :tip, :serving, ingredients_attributes: [:id, :volume, :_destroy, food_item_attributes: [:id, :name, :_destroy]])
     end
 end
