@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   
-  resources :comments
-
   root 'recipes#index'
   
   resources :ingredients
-  resources :recipes
+  
+  resources :recipes do
+    resources :comments
+  end
 
   devise_for :users
 
