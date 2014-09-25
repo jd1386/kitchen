@@ -12,32 +12,33 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <h3>Recipe Meta</h3>
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :method %><br>
-    <%= f.text_area :method %>
+    <%= f.text_area :method, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :source %><br>
-    <%= f.text_field :source %>
+    <%= f.text_field :source, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tip %><br>
-    <%= f.text_area :tip %>
+    <%= f.text_area :tip, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :serving %><br>
-    <%= f.text_field :serving %>
+    <%= f.text_field :serving, class: 'form-control' %>
   </div>
 
   <hr>
    <h3>Ingredients</h3>
   <!-- Begin form for recipe's ingredients -->
     <%= f.fields_for :ingredients do |i| %>
-      <div class="field">
+      <div class="form-group">
         <%= i.fields_for :food_item do |builder| %>
           <%= builder.text_field :name, placeholder: 'Food Item' %>
         <% end %>
