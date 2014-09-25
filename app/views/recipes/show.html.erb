@@ -26,10 +26,7 @@
   <p><strong>Ingredients</strong></p>
 
   <% @recipe.ingredients.each do |ingredient| %>
-    <% @recipe.food_items.each do |food_item| %>
-      <p><%= food_item.name %> : <%= ingredient.volume %>
-    <% end %>
-    </p>
+    <p><%= ingredient.food_item.name %> : <%= ingredient.volume %></p>
   <% end %>
 <% end %>
 
