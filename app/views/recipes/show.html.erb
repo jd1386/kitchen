@@ -82,4 +82,6 @@
 
 <hr>
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+<%= link_to 'Back', recipes_path %> | 
+<%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+

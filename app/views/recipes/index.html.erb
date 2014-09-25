@@ -1,12 +1,7 @@
 <h1>Hailey's Recipes</h1>
 
 <% @recipes.each do |recipe| %>
-     
-        <h2><%= link_to recipe.name, recipe %></h2>
-       
-        <%= link_to 'Edit', edit_recipe_path(recipe) %>
-        <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <br>
+  <h2><%= link_to recipe.name, recipe %></h2>
 <% end %>
   
 
