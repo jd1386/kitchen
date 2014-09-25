@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     @comments = @recipe.comments
-    @comment = current_user.comments.new
+    @comment = @recipe.comments.new
   end
 
   def new
@@ -22,7 +22,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    
     @recipe = Recipe.new(recipe_params)
 
     respond_to do |format|
@@ -64,4 +63,6 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:name, :method, :source, :tip, :serving, ingredients_attributes: [:id, :volume, :_destroy, food_item_attributes: [:id, :name, :_destroy]])
     end
+
 end
+

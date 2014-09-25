@@ -35,6 +35,7 @@
   <h4><%= pluralize(@comments.count, 'comment') %></h4>
   <% unless @comments.blank? %>
     <% @comments.each do |comment| %>
+      <% unless comment.user.blank? %>
     <div class="media">
       <a class="pull-left" href="#">
         <%= image_tag(gravatar_url(comment.user), width: 38, class: "img-circle") %>
@@ -55,26 +56,32 @@
       </div>
     </div>
     <% end %>
+    <% end %>
   <% end %>
 
  
   <!-- Form for New Comment -->
-  <%= form_for @comment, url: recipe_comments_path(@recipe) do |f| %>
-  <form class="form-horizontal" role="form">
-    <div class="media">
-      <a class="pull-left" href="#">
-        <%= image_tag(gravatar_url(current_user), width: 38, class: "img-circle") %>
-      </a>
-      <div class="media-body">
-        <div class="form-group">
-          <div class="input-group">
-            <%= f.text_field :content, size: 70 %>
-            <%= f.submit value: 'Add Comment', class: 'btn btn-default' %>
+  <% if current_user %>
+    <%= form_for @comment, url: recipe_comments_path(@recipe) do |f| %>
+    <form class="form-horizontal" role="form">
+      <div class="media">
+        <a class="pull-left" href="#">
+          <%= image_tag(gravatar_url(current_user), width: 38, class: "img-circle") %>
+        </a>
+        <div class="media-body">
+          <div class="form-group">
+            <div class="input-group">
+              <%= f.text_field :content, size: 70 %>
+              <%= f.submit value: 'Add Comment', class: 'btn btn-default' %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+    <% end %>
+
+    <% else %>
+    <p>You need to be logged in to leave comments. Go to <%= link_to 'log in', login_path %>.</p>
   <% end %>
 
 

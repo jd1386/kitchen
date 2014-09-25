@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def gravatar_url(user)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    gravatar_id = Digest::MD5::hexdigest(user.email).downcase unless user.blank?
     "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
