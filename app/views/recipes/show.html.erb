@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @recipe.name %></h1>
-<p>Created by <%= @recipe.user.first_name %> <%= @recipe.user.last_name %></p>
+<p>Created by <%= full_name_of(@recipe.user) %></p>
 
 <p>
   <strong>Method:</strong>
