@@ -13,7 +13,7 @@
           
           <% if current_user == comment.user %>
           <span style="font-size:12px;">
-            <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete %>  
+            <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete, remote: true %>  
           </span>
           <% end %>
         </p>

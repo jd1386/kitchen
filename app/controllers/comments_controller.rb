@@ -16,8 +16,13 @@ end
 
 def destroy
 	@comment = Comment.find(params[:id])
-	@comment.destroy
-	redirect_to recipe_path(@recipe)
+
+	respond_to do |format|
+		if @comment.destroy
+			format.html { redirect_to recipe_path(@recipe) }
+			format.js
+		end
+	end
 end
 
 

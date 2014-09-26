@@ -32,12 +32,15 @@
 
   <hr>
 
-  <h4><%= pluralize(@comments.count, 'comment') %></h4>
+  <div id="comments_count">
+    <h4><%= pluralize(@comments.count, 'comment') %></h4>
+  </div>
+
   <% unless @comments.blank? %>
   <div id="comments_list">
     <% @comments.each do |comment| %>
       <% unless comment.user.blank? %>
-    <div class="media">
+    <div class="media" id="comment-id-<%= comment.id %>">
       <a class="pull-left" href="#">
         <%= image_tag(gravatar_url(comment.user), width: 38, class: "img-circle") %>
       </a>
@@ -50,7 +53,7 @@
           
           <% if current_user == comment.user %>
           <span style="font-size:12px;">
-            <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete %>  
+            <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete, remote: true %>  
           </span>
           <% end %>
         </p>
