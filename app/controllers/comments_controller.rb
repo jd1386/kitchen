@@ -5,13 +5,14 @@ def create
 	@comment = current_user.comments.build(comment_params)
 	@comment.recipe = @recipe
 
-	if @comment.save
-		redirect_to recipe_path(@recipe)
-	else
-		render :new
+	respond_to do |format|
+		if @comment.save
+			format.html { redirect_to recipe_path(@recipe) }
+			format.js
+		end
 	end
-
 end
+
 
 def destroy
 	@comment = Comment.find(params[:id])
