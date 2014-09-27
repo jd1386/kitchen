@@ -2,11 +2,11 @@
 <div class="col-md-3">
   <div class="row">
     <h1><%= @recipe.name %></h1>
-    <p>Created by <%= link_to full_name_of(@recipe.user), @recipe.user %></p>
+    <div>Created by <%= link_to full_name_of(@recipe.user), @recipe.user %></div>
   </div>
   <div class="row">
     <h5>Description</h5>
-    <p>Description comes here</p>
+    <p><%= @recipe.description %></p>
   </div>
   <div class="row">
   <h5>Favs</h5>
@@ -33,11 +33,6 @@
     <%= @recipe.source %>
   </div>
 
-  <div class="row">
-    <h4>Tip</h4>
-    <%= @recipe.tip %>
-  </div>
-  
   <div class="row">  
     <h4>Serving</h4>
     <%= @recipe.serving %>
