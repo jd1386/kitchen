@@ -1,14 +1,21 @@
 <h1><%= full_name_of(@user) %></h1>
 
 <div class="col-md-2">
-	Some Content
+	<div class="row">
+		Some Content
+	</div>
 </div>
 
 <div class="col-md-10">
-	<h3>Recipes Created</h3>
-	<% @recipes.each do |recipe| %>
-		<div><%= link_to recipe.name, recipe %></div>
-
-	<% end %>
+	<div class="row">
+		<h3>Recipes Created</h3>
+		<% @recipes.each do |recipe| %>
+			<div><%= link_to recipe.name, recipe %></div>
+		<% end %>
+	</div>
+	<div class="row">
+		<h3>My Favs</h3>
+		<div>Fav list</div>
+	</div>
 </div>
 
