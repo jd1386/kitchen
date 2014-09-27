@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= full_name_of(@user) %></h1>
+
+<div class="col-md-2">
+	Some Content
+</div>
+
+<div class="col-md-10">
+	<h3>Recipes Created</h3>
+	<% @recipes.each do |recipe| %>
+		<div><%= link_to recipe.name, recipe %></div>
+
+	<% end %>
+</div>
+
