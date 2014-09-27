@@ -6,10 +6,11 @@
       </a>
       <div class="media-body">
         <div class="media-heading">
-          <strong><%= comment.user.first_name %></strong>
+          <strong><%= link_to comment.user.first_name, comment.user %></strong>
         </div> 
         <p>
           <%= comment.content %>
+          <span class="muted"><%= time_ago_in_words(comment.created_at) %> ago.</span>
           
           <% if current_user == comment.user %>
           <span style="font-size:12px;">

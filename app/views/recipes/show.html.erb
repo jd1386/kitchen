@@ -9,6 +9,10 @@
     <p><%= @recipe.description %></p>
   </div>
   <div class="row">
+    <h5>Source</h5>
+    <%= @recipe.source %>
+  </div>
+  <div class="row">
   <h5>Favs</h5>
     <div>Fav content will come here</div>
   </div>
@@ -23,29 +27,20 @@
 </div>
 
 <div class="col-md-4">
-  <div class="row">
-    <h4>Method</h4>
-    <%= @recipe.method %>
-  </div>
-
-  <div class="row">
-    <h4>Source</h4>
-    <%= @recipe.source %>
-  </div>
-
-  <div class="row">  
-    <h4>Serving</h4>
-    <%= @recipe.serving %>
-  </div>
-
   <% unless @recipe.ingredients.blank? %>
   <div class="row">  
-    <h4>Ingredients</h4>
+    <h5>Ingredients for <%= @recipe.serving %></h5>
     <% @recipe.ingredients.each do |ingredient| %>
       <div><%= ingredient.food_item.name %>  <%= ingredient.volume %></div>
     <% end %>
   </div>
   <% end %>
+
+  <div class="row">
+    <h5>Method</h5>
+    <%= @recipe.method %>
+  </div>
+
 </div>
 </div>
 
@@ -67,10 +62,11 @@
         </a>
         <div class="media-body">
           <div class="media-heading">
-            <strong><%= comment.user.first_name %></strong>
+            <strong><%= link_to comment.user.first_name, comment.user %></strong>
           </div> 
           <p>
             <%= comment.content %>
+            <span class="muted"><%= time_ago_in_words(comment.created_at) %> ago</span>
             
             <% if current_user == comment.user %>
             <span style="font-size:12px;">
