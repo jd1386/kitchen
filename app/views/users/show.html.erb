@@ -15,7 +15,9 @@
 	</div>
 	<div class="row">
 		<h3>My Favs</h3>
-		<div>Fav list</div>
+		<% @favorites.each do |favorite| %>
+			<div><%= link_to favorite.name, favorite %></div>
+		<% end %>
 	</div>
 </div>
 

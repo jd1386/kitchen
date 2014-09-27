@@ -13,13 +13,21 @@
     <%= @recipe.source %>
   </div>
   <div class="row">
-  <h5>Favs</h5>
-    <div>Fav content will come here</div>
-  </div>
-  <div class="row">
   <h5>Tags</h5>
     <div>Tags will come here</div>
   </div>
+  <div class="row">
+  <h5>Favs</h5>
+    <div>Fav button will come here</div>
+      <% unless @fans.empty? %>
+      <% @fans.each do |fan| %>
+        <div>
+          <span><%= link_to fan.first_name, fan %></span>
+        </div>
+      <% end %>
+      <% end %>
+  </div>
+
 </div>
 
 <div class="col-md-5">
