@@ -1,67 +1,93 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+<div class="col-md-3">
+  <div class="row">
+    <h1><%= @recipe.name %></h1>
+    <p>Created by <%= link_to full_name_of(@recipe.user), @recipe.user %></p>
+  </div>
+  <div class="row">
+    <h5>Description</h5>
+    <p>Description comes here</p>
+  </div>
+  <div class="row">
+  <h5>Favs</h5>
+    <div>Fav content will come here</div>
+  </div>
+  <div class="row">
+  <h5>Tags</h5>
+    <div>Tags will come here</div>
+  </div>
+</div>
 
-<h1><%= @recipe.name %></h1>
-<p>Created by <%= full_name_of(@recipe.user) %></p>
+<div class="col-md-5">
+  Image will come here
+</div>
 
-<p>
-  <strong>Method:</strong>
-  <%= @recipe.method %>
-</p>
+<div class="col-md-4">
+  <div class="row">
+    <h4>Method</h4>
+    <%= @recipe.method %>
+  </div>
 
-<p>
-  <strong>Source:</strong>
-  <%= @recipe.source %>
-</p>
+  <div class="row">
+    <h4>Source</h4>
+    <%= @recipe.source %>
+  </div>
 
-<p>
-  <strong>Tip:</strong>
-  <%= @recipe.tip %>
-</p>
+  <div class="row">
+    <h4>Tip</h4>
+    <%= @recipe.tip %>
+  </div>
+  
+  <div class="row">  
+    <h4>Serving</h4>
+    <%= @recipe.serving %>
+  </div>
 
-<p>
-  <strong>Serving:</strong>
-  <%= @recipe.serving %>
-</p>
-
-<% unless @recipe.ingredients.blank? %>
-  <p><strong>Ingredients</strong></p>
-
-  <% @recipe.ingredients.each do |ingredient| %>
-    <p><%= ingredient.food_item.name %> : <%= ingredient.volume %></p>
+  <% unless @recipe.ingredients.blank? %>
+  <div class="row">  
+    <h4>Ingredients</h4>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <div><%= ingredient.food_item.name %>  <%= ingredient.volume %></div>
+    <% end %>
+  </div>
   <% end %>
-<% end %>
+</div>
+</div>
 
-  <hr>
+<hr>
 
+<div class="row">
   <div id="comments_count">
     <h4><%= pluralize(@comments.count, 'comment') %></h4>
   </div>
 
   <% unless @comments.blank? %>
-  <div id="comments_list">
-    <% @comments.each do |comment| %>
-      <% unless comment.user.blank? %>
-    <div class="media" id="comment-id-<%= comment.id %>">
-      <a class="pull-left" href="#">
-        <%= image_tag(gravatar_url(comment.user), width: 38, class: "img-circle") %>
-      </a>
-      <div class="media-body">
-        <div class="media-heading">
-          <strong><%= comment.user.first_name %></strong>
-        </div> 
-        <p>
-          <%= comment.content %>
-          
-          <% if current_user == comment.user %>
-          <span style="font-size:12px;">
-            <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete, remote: true %>  
-          </span>
-          <% end %>
-        </p>
+  <div class="row">
+    <div id="comments_list">
+      <% @comments.each do |comment| %>
+        <% unless comment.user.blank? %>
+      <div class="media" id="comment-id-<%= comment.id %>">
+        <a class="pull-left" href="#">
+          <%= image_tag(gravatar_url(comment.user), width: 38, class: "img-circle") %>
+        </a>
+        <div class="media-body">
+          <div class="media-heading">
+            <strong><%= comment.user.first_name %></strong>
+          </div> 
+          <p>
+            <%= comment.content %>
+            
+            <% if current_user == comment.user %>
+            <span style="font-size:12px;">
+              <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete, remote: true %>  
+            </span>
+            <% end %>
+          </p>
+        </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
-    <% end %>
-    <% end %>
   </div>
   <% end %>
 
@@ -71,4 +97,4 @@
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %> | 
 <%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+</div>
