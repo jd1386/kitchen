@@ -17,6 +17,17 @@
     <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
   <div class="form-group">
     <%= f.label :method %><br>
     <%= f.text_area :method, class: 'form-control' %>
@@ -25,10 +36,7 @@
     <%= f.label :source %><br>
     <%= f.text_field :source, class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :tip %><br>
-    <%= f.text_area :tip, class: 'form-control' %>
-  </div>
+
   <div class="form-group">
     <%= f.label :serving %><br>
     <%= f.text_field :serving, class: 'form-control' %>
