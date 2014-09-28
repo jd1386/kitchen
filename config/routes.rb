@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-    resources :favorites
+    resources :favorites, only: [:create, :destroy]
   end
 
   devise_for :users 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   	get '/login/', to: 'devise/sessions#new', as: 'login'
   	get '/signup', to: 'devise/registrations#new', as: 'signup'
   	get '/settings', to: 'devise/registrations#edit', as: 'settings'
+    get 'sign_in', to: 'devise/sessions#new'
 	end
  
 end
