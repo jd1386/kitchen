@@ -1,3 +1,4 @@
+<% @user ||= current_user %>
 <div class="row">
 <div class="col-md-3">
   <div class="row">
@@ -20,10 +21,15 @@
 
   <div class="row">
   <h5>Favs - Method Two</h5>
-    <% if current_user.saved_to_favorites?(@recipe) %>
-      <div>You have saved this recipe already.</div>
+    <% if @user.saved_to_favorites?(@recipe) %>
+      <div>
+        Remove from Fav
+      </div>
     <% else %>
-      <div>Save to Favorites</div>
+      <div>
+        <%= button_to "Add to Fav", user_favorites_path(@recipe) %>
+        
+      </div>
     <% end %>
       <% unless @fans.empty? %>
       <% @fans.each do |fan| %>
@@ -84,7 +90,7 @@
             <%= comment.content %>
             <span class="muted"><%= time_ago_in_words(comment.created_at) %> ago</span>
             
-            <% if current_user == comment.user %>
+            <% if @user == comment.user %>
             <span style="font-size:12px;">
               <%= link_to 'Delete', recipe_comment_path(@recipe, comment), method: :delete, remote: true %>  
             </span>
@@ -100,7 +106,7 @@
 
  <%= render 'comments/form' %>
 
-<% if current_user.try(:admin?) %>
+<% if @user.try(:admin?) %>
   <hr>
   <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
   <%= link_to 'Back', recipes_path %> | 

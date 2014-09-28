@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites
   end
 
   devise_for :users 
