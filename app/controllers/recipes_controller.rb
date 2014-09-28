@@ -10,6 +10,11 @@ class RecipesController < ApplicationController
     @comments = @recipe.comments
     @comment = @recipe.comments.new
     @fans = @recipe.fans
+
+    if current_user
+      @current_favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
+    end
+
   end
 
   def new

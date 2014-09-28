@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   
   resources :recipes do
     resources :comments
+    resources :favorites, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show] do
-    resources :favorites
-  end
+  resources :users, only: [:show]
+
 
   devise_for :users 
 

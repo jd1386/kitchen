@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorite_recipes, through: :favorites, source: :user
+  has_many :favorite_recipes, through: :favorites, source: :recipe
 
   def saved_to_favorites?(recipe)
   	favorites.find_by(recipe_id: recipe.id)

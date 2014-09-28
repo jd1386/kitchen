@@ -3,6 +3,8 @@
 <div class="col-md-3">
   <div class="row">
     <h1><%= @recipe.name %></h1>
+  </div>
+  <div class="row">
     <div>Created by <%= link_to full_name_of(@recipe.user), @recipe.user %></div>
   </div>
   <div class="row">
@@ -18,19 +20,8 @@
     <div>Tags will come here</div>
   </div>
 
-
   <div class="row">
-  <h5>Favs - Method Two</h5>
-    <% if @user.saved_to_favorites?(@recipe) %>
-      <div>
-        Remove from Fav
-      </div>
-    <% else %>
-      <div>
-        <%= button_to "Add to Fav", user_favorites_path(@recipe) %>
-        
-      </div>
-    <% end %>
+  <h5>Fans (<%= @fans.count %>)</h5>
       <% unless @fans.empty? %>
       <% @fans.each do |fan| %>
         <div>
@@ -40,11 +31,25 @@
       <% end %>
   </div>
 
+  <div class="row">
+    <% if @user.saved_to_favorites?(@recipe) %>
+      <div>
+        <%= button_to "Remove from Fav", recipe_favorite_path(@recipe, @current_favorite), method: :delete, class: 'btn btn-default' %>
+      </div>
+    <% else %>
+      <div>
+        <%= button_to "Add to Fav", recipe_favorites_path(@recipe), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
 <div class="col-md-5">
   <% unless @recipe.image.url.blank? %>
-    <%= image_tag @recipe.image.url(:medium), class: 'image-medium' %>
+    <div class="row">
+      <%= image_tag @recipe.image.url(:medium), class: 'image-medium' %>
+    </div>
   <% end %>
 </div>
 
