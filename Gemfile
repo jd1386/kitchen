@@ -46,4 +46,6 @@ gem 'byebug'
 
 gem 'figaro'
 
+gem 'smarter_csv'
+
 
