@@ -17,9 +17,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
 	padding-top: 60px;
 	background: #efefef;
+}
+
+.container#body {
+	padding-bottom: 80px;
 }
 
 hr {
@@ -57,4 +66,13 @@ hr {
 
 img.image-medium {
 	width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #45ADFF;
 }

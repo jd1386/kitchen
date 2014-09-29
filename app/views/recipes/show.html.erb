@@ -81,10 +81,12 @@
 
 <hr>
 
+
 <div class="row">
   <div id="comments_count">
     <h4><%= pluralize(@comments.count, 'comment') %></h4>
   </div>
+</div>
 
   <% unless @comments.blank? %>
   <div class="row">
@@ -118,3 +120,5 @@
   <% end %>
 
  <%= render 'comments/form' %>
+
+
