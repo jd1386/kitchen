@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :admins
+
   root 'recipes#index'
   
   resources :ingredients
