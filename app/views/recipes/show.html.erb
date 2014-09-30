@@ -21,9 +21,9 @@
   </div>
 
   <div class="row">
-  <h5>Fans (<%= @fans.count %>)</h5>
-      <% unless @fans.empty? %>
-      <% @fans.each do |fan| %>
+  <h5>Fans (<%= @recipe.fans.count %>)</h5>
+      <% unless @recipe.fans.empty? %>
+      <% @recipe.fans.each do |fan| %>
         <div>
           <span><%= link_to fan.first_name, fan %></span>
         </div>
@@ -84,14 +84,14 @@
 
 <div class="row">
   <div id="comments_count">
-    <h4><%= pluralize(@comments.count, 'comment') %></h4>
+    <h4><%= pluralize(@recipe.comments.count, 'comment') %></h4>
   </div>
 </div>
 
-  <% unless @comments.blank? %>
+  <% unless @recipe.comments.blank? %>
   <div class="row">
     <div id="comments_list">
-      <% @comments.each do |comment| %>
+      <% @recipe.comments.each do |comment| %>
         <% unless comment.user.blank? %>
       <div class="media" id="comment-id-<%= comment.id %>">
         <a class="pull-left" href="#">
