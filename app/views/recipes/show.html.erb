@@ -1,27 +1,20 @@
 <% @user ||= current_user %>
 <div class="row">
 <div class="col-md-3">
-  <div class="row">
     <h1><%= @recipe.name %></h1>
-  </div>
-  <div class="row">
+
     <div>Created by <%= link_to full_name_of(@recipe.user), @recipe.user %></div>
-  </div>
-  <div class="row">
+
     <h5>Description</h5>
     <p><%= @recipe.description %></p>
-  </div>
-  <div class="row">
+
     <h5>Source</h5>
     <%= @recipe.source %>
-  </div>
-  <div class="row">
-  <h5>Tags</h5>
-    <div>Tags will come here</div>
-  </div>
 
-  <div class="row">
-  <h5>Fans (<%= @recipe.fans.count %>)</h5>
+    <h5>Tags</h5>
+    <div>Tags will come here</div>
+
+    <h5>Fans (<%= @recipe.fans.count %>)</h5>
       <% unless @recipe.fans.empty? %>
       <% @recipe.fans.each do |fan| %>
         <div>
@@ -29,9 +22,8 @@
         </div>
       <% end %>
       <% end %>
-  </div>
 
-  <div class="row">
+
     <% if @user.saved_to_favorites?(@recipe) %>
       <div>
         <%= button_to "Remove from Fav", recipe_favorite_path(@recipe, @current_favorite), method: :delete, class: 'btn btn-default' %>
@@ -41,7 +33,7 @@
         <%= button_to "Add to Fav", recipe_favorites_path(@recipe), class: 'btn btn-primary' %>
       </div>
     <% end %>
-  </div>
+
 
 </div>
 
